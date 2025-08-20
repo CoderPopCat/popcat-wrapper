@@ -51,17 +51,20 @@ const codebin = new CodeClient({ key: 'your-secret-key' });
 
 })();
 ```
-Supported Languages:
-- JavaScript
-- JSON
-- HTML
-- CSS
-- Markdown
-- PlainText
+### Supported Languages
+- **JavaScript**  
+- **JSON**  
+- **HTML**  
+- **CSS**  
+- **Markdown**  
+- **PlainText**  
 
-Supported Themes: [Click here to view](https://code.popcat.xyz/Cm0rdDoNx)
+### Supported Themes
+[View all themes](https://code.popcat.xyz/Cm0rdDoNx)  
 
-Get a key from the [Discord Server](https://popcat.xyz/server) !!
+### Getting an API Key
+Get your key from the [PopCat Discord Server](https://popcat.xyz/server) 🔑  
+
 
 ### Jokes command, no input example:
 ```js
