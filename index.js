@@ -1,6 +1,5 @@
 const fetch = require('node-fetch')
 const baseurl = 'https://api.popcat.xyz/';
-const mongoose = require("mongoose")
 
 async function request(endpoint, input = '') {
   const res = `${baseurl}${endpoint}?${input}`
@@ -14,20 +13,35 @@ class CodeClient {
   }
 
   /**
-   * Creates a new paste in https://code.popcat.xyz
-   * 
-   * @param {Object} options - Paste options
-   * @param {string} options.title - Title of the paste
-   * @param {string} options.description - Description of the paste
-   * @param {string} options.code - Code/content of the paste
-   * @param {string} [options.theme] - Optional theme for the paste (e.g., 'GitHub-Dark')
-   * @param {"JavaScript"|"JSON"|"HTML"|"CSS"|"Markdown"|"PlainText"} [options.language] - Optional language of the paste. Must be one of the listed values.
+   * Creates a new paste on https://code.popcat.xyz.
+   *
+   * @param {Object} options - Paste options.
+   * @param {string} options.title - Title of the paste. (Required)
+   * @param {string} options.description - Description of the paste. (Required)
+   * @param {string} options.code - The content/code to paste. (Required)
+   * @param {"Active4D"|"All Hallows Eve"|"Amy"|"Birds of Paradise"|"Blackboard"|
+   * "Brilliance Black"|"Brilliance Dull"|"Chrome DevTools"|"Clouds Midnight"|"Clouds"|
+   * "Cobalt"|"Cobalt2"|"Dawn"|"Dominion Day"|"Dracula"|"Dreamweaver"|"Eiffel"|
+   * "Espresso Libre"|"GitHub Dark"|"GitHub Light"|"GitHub"|"IDLE"|"idleFingers"|
+   * "iPlastic"|"Katzenmilch"|"krTheme"|"Kuroir Theme"|"LAZY"|"Merbivore Soft"|
+   * "Merbivore"|"monoindustrial"|"Monokai Bright"|"Monokai"|"Night Owl"|"Nord"|
+   * "Oceanic Next"|"Pastels on Dark"|"Slush and Poppies"|"SpaceCadet"|"Sunburst"|
+   * "Tomorrow"|"Twilight"|"Upstream Sunburst"|"Vibrant Ink"|"Xcode_default"|"Zenburnesque"} 
+   * [options.theme='GitHub Dark'] - Optional theme for syntax highlighting.
+   * @param {"JavaScript"|"JSON"|"HTML"|"CSS"|"Markdown"|"PlainText"} 
+   * [options.language='PlainText'] - Optional language of the paste.
+   *
    * @returns {Promise<{ url: string, paste: Object }>} - Returns an object containing:
-   *          url: URL of the created paste,
-   *          paste: Inserted paste object with details
+   *   - url: The URL of the created paste.
+   *   - paste: The inserted paste object with details.
+   *
+   * @throws {Error} Throws an error if required parameters are missing or if the theme/language is invalid.
    */
+
   async createBin({ title, description, code, theme, language }) {
     const allowedLanguages = ["JavaScript", "JSON", "HTML", "CSS", "Markdown", "PlainText"];
+    const allowedThemes = ["Active4D", "All Hallows Eve", "Amy", "Birds of Paradise", "Blackboard", "Brilliance Black", "Brilliance Dull", "Chrome DevTools", "Clouds Midnight", "Clouds", "Cobalt", "Cobalt2", "Dawn", "Dominion Day", "Dracula", "Dreamweaver", "Eiffel", "Espresso Libre", "GitHub Dark", "GitHub Light", "GitHub", "IDLE", "idleFingers", "iPlastic", "Katzenmilch", "krTheme", "Kuroir Theme", "LAZY", "Merbivore Soft", "Merbivore", "monoindustrial", "Monokai Bright", "Monokai", "Night Owl", "Nord", "Oceanic Next", "Pastels on Dark", "Slush and Poppies", "SpaceCadet", "Sunburst", "Tomorrow", "Twilight", "Upstream Sunburst", "Vibrant Ink", "Xcode_default", "Zenburnesque"
+    ];
 
     if (!title) throw new Error("[Popcat Wrapper] CodeClient.createBin(...) => 'title' parameter is required.");
     if (!description) throw new Error("[Popcat Wrapper] CodeClient.createBin(...) => 'description' parameter is required.");
@@ -37,13 +51,17 @@ class CodeClient {
       throw new Error(`[Popcat Wrapper] CodeClient.createBin(...) => 'language' must be one of ${allowedLanguages.join(", ")}`);
     }
 
+    if (theme && !allowedThemes.some(t => t.toLowerCase() === theme.toLowerCase())) {
+      throw new Error(`[Popcat Wrapper] CodeClient.createBin(...) => 'theme' must be one of ${allowedThemes.join(", ")}`);
+    }
+
     const res = await fetch("https://code.popcat.xyz/api/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "token": this.key
       },
-      body: JSON.stringify({ title, description, code, theme, language })
+      body: JSON.stringify({ title, description, code, theme: theme || 'GitHub Dark', language: language || 'PlainText' })
     });
 
     const json = await res.json();
