@@ -1,6 +1,6 @@
 {
   "name": "popcat-wrapper",
-  "version": "1.5.7",
+  "version": "1.5.8",
   "description": "An API wrapper for the Pop Cat API to make your life easier while using it!",
   "homepage": "https://api.popcat.xyz",
   "keywords": [

@@ -61,6 +61,8 @@ Supported Languages:
 
 Supported Themes: [Click here to view](https://code.popcat.xyz/Cm0rdDoNx)
 
+Get a key from the [Discord Server](https://popcat.xyz/server) !!
+
 ### Jokes command, no input example:
 ```js
 const pop = require("popcat-wrapper")
