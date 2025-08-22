@@ -66,6 +66,33 @@ const codebin = new CodeClient({ key: 'your-secret-key' });
 Get your key from the [PopCat Discord Server](https://popcat.xyz/server) 🔑  
 
 
+### Shorten a URL With [PopCat URL Shortener](https://url.popcat.xyz)
+```js
+const { Shortener } = require('popcat-wrapper');
+(async () => {// Async function
+  // Shorten a URL
+  const shortened = await Shortener.shorten({
+    url: 'https://your-url.com',
+    extension: 'example-endpoint'
+  });
+  console.log(shortened);
+  // {
+  //   short: 'https://url.popcat.xyz/example-endpoint',
+  //   full: 'https://your-url.com',
+  //   clicks: 0
+  // }
+
+  // Get a URL
+  const url = await Shortener.getInfo({ extension: 'pop' });
+  // {
+  //   short: 'https://url.popcat.xyz/pop',
+  //   full: 'https://api.popcat.xyz',
+  //   clicks: 12,
+  //   date: '2025-08-22T08:35:25.000Z'
+  // }
+})();
+```
+
 ### Jokes command, no input example:
 ```js
 const pop = require("popcat-wrapper")

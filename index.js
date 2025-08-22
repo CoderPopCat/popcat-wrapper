@@ -74,6 +74,39 @@ class CodeClient {
   }
 }
 
+class Shortener {
+  static async shorten({ url, extension }) {
+    if (!url) throw new Error("[Popcat Wrapper] Shortener.shorten(...) => 'url' parameter is required.");
+    if (!extension) throw new Error("[Popcat Wrapper] Shortener.shorten(...) => 'extension' parameter is required.")
+    const body = {
+      full: url,
+      extension
+    };
+    const res = await fetch(`https://url.popcat.xyz/api/shorten`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body)
+    });
+
+    const json = await res.json();
+    if (!json || json.error) {
+      throw new Error(`[Popcat Wrapper] Shortener.shorten(...) => ${json?.error || "Unknown error occurred"}`);
+    }
+
+    return json;
+  }
+
+  static async getInfo({ extension }) {
+    if (!extension) throw new Error("[Popcat Wrapper] Shortener.getInfo(...) => 'extension' parameter is required.");
+    const res = await fetch(`https://url.popcat.xyz/api/info?short=${encodeURIComponent(extension)}`);
+    const json = await res.json();
+    if (!json || json.error) throw new Error(`[Popcat Wrapper] Shortener.getInfo(...) => ${json?.error || "Unknown error occurred"}`);
+    return json;
+  }
+}
+
 module.exports.quote = (image, text, name) => {
   if (!image || !text || !name || name.length === 0) throw new Error("[Popcat Wrapper] quote(image, text, name) => Either 'image', 'text' or 'name' parameter is missing.");
   if (text.length === 0 || text.length > 125) return new Error("[Popcat Wrapper] quote(image, text, name) => 'text' parameter must be between 1-125 characters.");
@@ -494,3 +527,4 @@ module.exports._8ball = async function () {
   return json.answer;
 }
 module.exports.CodeClient = CodeClient;
+module.exports.Shortener = Shortener;
