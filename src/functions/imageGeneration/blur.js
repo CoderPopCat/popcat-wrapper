@@ -1,0 +1,25 @@
+const { request } = require('../../utils/request');
+
+/**
+ * Generates a blur image URL with the provided image.
+ *
+ * @param {string} image - Image URL for the blur effect. (Required)
+ *
+ * @returns {string} - Returns the URL of the generated blur image.
+ *
+ * @throws {Error} Throws an error if the image parameter is missing.
+ *
+ * @example
+ * blur("https://example.com/image.jpg")
+ */
+function blur(image) {
+	if (!image)
+		throw new Error(
+			"[Popcat Wrapper] The field 'image' was left empty in the blur function. Need help? https://dsc.gg/popcatcom",
+		);
+	const input = `image=${encodeURIComponent(image)}`;
+	const res = request('blur', input);
+	return res;
+}
+
+module.exports = { blur };

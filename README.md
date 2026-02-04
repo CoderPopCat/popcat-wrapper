@@ -194,7 +194,7 @@ But here is the list:
  - `randomcolor()`
  - `fact()`
  - `_8ball()`
- - `discordMessage({ username, content, avatar, color, timestamp })` // avatar, color, timestamp are optional
+ - `discordMessage({ username, content, avatar, color, timestamp })` 
  - `drake(text1, text2)`
  - `pooh(text1, text2)`
  - `happysad(text1, text2)`
@@ -218,7 +218,7 @@ But here is the list:
  - `whowouldwin(image_url_1, image_url_2)`
  - `opinion(image_url, text)`
  - `wanted(image_url)`
- - `gun(image_url, text)` (text is optional)
+ - `gun(image_url, text)` 
  - `jail(image_url)`
  - `translate(text, to_language)`
  - `reverse(text)`
