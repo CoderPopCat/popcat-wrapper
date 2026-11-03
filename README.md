@@ -9,7 +9,7 @@
   </p>
 </div>
 
-# Community
+## Community
 <p>Join <a href="https://popcat.xyz/server">Our Server</a> If you want to have fun or need any support!</p>
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Y8Y56OOQW)
@@ -21,7 +21,7 @@ npm i popcat-wrapper
 
 ## Examples
 
-### Upload Code To The [CodeBin](https://code.popcat.xyz)
+### Upload Code to the [CodeBin](https://code.popcat.xyz)
 ```js
 const { CodeClient } = require('popcat-wrapper');
 const codebin = new CodeClient({ key: 'your-secret-key' });
@@ -93,7 +93,7 @@ const { Shortener } = require('popcat-wrapper');
 })();
 ```
 
-### Jokes command, no input example:
+### Jokes Command (No Input Example)
 ```js
 const pop = require("popcat-wrapper")
 const Discord = require("discord.js")
@@ -110,7 +110,7 @@ client.login("bot token")
 
 ```
 
-### Biden command, 1 text input example
+### Biden Command (Single Text Input Example)
 ```js
 const pop = require('popcat-wrapper')
 const Discord = require('discord.js')
@@ -121,7 +121,7 @@ const image = new Discord.MessageAttachment(img, "biden.png")
 message.channel.send(image)
 ```
 
-###  Pooh meme command, more than one text input example
+###  Pooh Meme Command (More Than One Text Input Example)
 ```js
 const pop = require('popcat-wrapper')
 const Discord = require('discord.js')
@@ -134,7 +134,7 @@ message.channel.send(image)
 
 ```
 
-### Drip command, image input example
+### Drip Command (Image Input Example)
 ```js
 const Discord = require("discord.js");
 const pop = require('popcat-wrapper')
@@ -148,7 +148,7 @@ const attachment = new Discord.MessageAttachment(image, "drip.png");
 message.channel.send(attachment);
 ```
 
-### Color command, object output example:
+### Color Command (Object Output Example)
 
 ```js
 const pop = require("popcat-wrapper")
@@ -165,13 +165,10 @@ console.log(output)
  "brightened": "#ffe6cc"
 }*/
 ```
-So, if you want to collect for example the rgb, you need to:
+If you want to get a specific property you have to use `console.log(output.<property_name>)`.    
+For example: If you want the RGB value, use `console.log(output.rgb)` (which returns `"rgb(255,204,153)"`).
 
-`
-console.log(output.rgb)
-` (gives out the rgb value of 'ffcc99' hex.)
-
- This method applies for, iTunes, WouldYouRather, RandomMeme, npm, banner, country, weather, github, car, showerthoughts, lyrics and Colorinfo.
+This method also applies to, `iTunes`, `WouldYouRather`, `RandomMeme`, `npm`, `banner`, `country`, `weather`, `github`, `car`, `showerthoughts`, `lyrics and Colorinfo`.
 
 
 ### Welcome Card
@@ -187,69 +184,69 @@ const attachment = new Discord.MessageAttachment(image, "welcomecard.png")
 ## Endpoints
 You can get a full list of the possible API endpoints [Here](https://api.popca.xyz)
 But here is the list:
- - `joke()`
- - `car()`
- - `showerthoughts()`
- - `randommeme()`
- - `randomcolor()`
- - `fact()`
- - `_8ball()`
- - `discordMessage({ username, content, avatar, color, timestamp })` // avatar, color, timestamp are optional
- - `drake(text1, text2)`
- - `pooh(text1, text2)`
- - `happysad(text1, text2)`
- - `ship(image1, image2)`
- - `quote(background_image, text, author_name)`
- - `colorify(image, color_name)`
- - `couldread(text)`
- - `supreme(text)`
- - `biden(text)`
- - `pikachu(text)`
- - `oogway(text)`
- - `drip(image)`
- - `communism(image_url)`
- - `clown(image_url)`
- - `ad(image_url)`
- - `blur(image_url)`
- - `invert(image_url)`
- - `greyscale(image_url)`
- - `jokeoverhead(image_url)`
- - `mnm(image_url)`
- - `whowouldwin(image_url_1, image_url_2)`
- - `opinion(image_url, text)`
- - `wanted(image_url)`
- - `gun(image_url, text)` (text is optional)
- - `jail(image_url)`
- - `translate(text, to_language)`
- - `reverse(text)`
- - `alert(text)`
- - `caution(text)`
- - `mock(text)`
- - `facts(text)`
- - `encode(text)`
- - `sadcat(text)`
- - `lulcat(text)`
- - `unforgivable(text)`
- - `decode(binary)`
- - `lyrics(song)`
- - `subreddit(subredditName)`
- - `doublestruck(text)`
- - `texttomorse(text)`
- - `github(user_name)`
- - `weather(location_name)`
- - `itunes(song_name)`
- - `country(country_name`
- - `npm(package_name)`
- - `colorinfo(color_hex)`
- - `screenshot(url)`
- - `steam(name)`
- - `imdb(moviename)`
- - `welcomecard(background, avatar, text_1, text_2, text_3)`
- - `periodicTable(element_name_symbol_or_number)`
+- `_8ball()`
+- `ad(image_url)`
+- `alert(text)`
+- `biden(text)`
+- `blur(image_url)`
+- `car()`
+- `caution(text)`
+- `clown(image_url)`
+- `colorify(image, color_name)`
+- `colorinfo(color_hex)`
+- `communism(image_url)`
+- `couldread(text)`
+- `country(country_name)`
+- `decode(binary)`
+- `discordMessage({ username, content, avatar, color, timestamp })`  // avatar, color, timestamp are optional
+- `doublestruck(text)`
+- `drake(text1, text2)`
+- `drip(image)`
+- `encode(text)`
+- `fact()`
+- `facts(text)`
+- `github(user_name)`
+- `greyscale(image_url)`
+- `gun(image_url, text)` (text is optional)
+- `happysad(text1, text2)`
+- `imdb(moviename)`
+- `invert(image_url)`
+- `itunes(song_name)`
+- `jail(image_url)`
+- `joke()`
+- `jokeoverhead(image_url)`
+- `lulcat(text)`
+- `lyrics(song)`
+- `mnm(image_url)`
+- `mock(text)`
+- `npm(package_name)`
+- `oogway(text)`
+- `opinion(image_url, text)`
+- `periodicTable(element_name_symbol_or_number)`
+- `pikachu(text)`
+- `pooh(text1, text2)`
+- `quote(background_image, text, author_name)`
+- `randomcolor()`
+- `randommeme()`
+- `reverse(text)`
+- `sadcat(text)`
+- `screenshot(url)`
+- `ship(image1, image2)`
+- `showerthoughts()`
+- `steam(name)`
+- `subreddit(subredditName)`
+- `supreme(text)`
+- `texttomorse(text)`
+- `translate(text, to_language)`
+- `unforgivable(text)`
+- `wanted(image_url)`
+- `weather(location_name)`
+- `welcomecard(background, avatar, text_1, text_2, text_3)`
+- `whowouldwin(image_url_1, image_url_2)`
 
 
 
 ## Credits
-Made with ❤ by Zero Two#7177
+Made with ❤ by zerotwo._02 on Discord
 
 Join Our Discord Server! [Link](https://popcat.xyz/server)
